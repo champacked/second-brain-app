@@ -3,29 +3,29 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-// mongoose
-//   .connect(process.env.MONGO_URL!)
-//   .then(() => {
-//     console.log(`MongoDB Connected: ${process.env.MONGO_URL}`);
-//   })
-//   .catch((error) => {
-//     console.error("Error connecting to MongoDB:", error.message);
-//   });
-
-let isConnected = false; // Track connection status
-
-async function connectToDatabase() {
-  if (isConnected) return;
-
-  try {
-    // Connect to MongoDB without the deprecated options
-    await mongoose.connect(process.env.MONGO_URL!);
-    isConnected = true;
+mongoose
+  .connect(process.env.MONGO_URL!)
+  .then(() => {
     console.log(`MongoDB Connected: ${process.env.MONGO_URL}`);
-  } catch (error) {
-    console.error("Error connecting to MongoDB:", (error as Error).message);
-  }
-}
+  })
+  .catch((error) => {
+    console.error("Error connecting to MongoDB:", error.message);
+  });
+
+// let isConnected = false; // Track connection status
+
+// async function connectToDatabase() {
+//   if (isConnected) return;
+
+//   try {
+//     // Connect to MongoDB without the deprecated options
+//     await mongoose.connect(process.env.MONGO_URL!);
+//     isConnected = true;
+//     console.log(`MongoDB Connected: ${process.env.MONGO_URL}`);
+//   } catch (error) {
+//     console.error("Error connecting to MongoDB:", (error as Error).message);
+//   }
+// }
 
 const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },

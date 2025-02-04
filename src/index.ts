@@ -5,11 +5,11 @@ import { ContentRouter } from "./routes/ContentRouter";
 import { BrainRouter } from "./routes/BrainRouter";
 import cors from "cors";
 import { getEmbeddings } from "./utils/TextEmbeddings";
-import { QdrantSearch } from "./utils/QdrantProcessing";
+
 import { authMiddleware } from "./middleware/authMiddleware";
 dotenv.config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8787;
 
 const app = express();
 
@@ -28,5 +28,4 @@ app.get("/", (req, res) => {
     message: "BigBrain backend - By Aman Verma",
   });
 });
-
 app.listen(PORT);
